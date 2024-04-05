@@ -22,7 +22,7 @@ public class BankAccountControllerImpl implements BankAccountController {
     @Override
     @PostMapping
     public BankAccountDTO createBankAccount(@RequestBody CreateBankAccountRequest request) {
-        return bankAccountService.createBankAccount(request.accountNumber(), request.balance());
+        return bankAccountService.createBankAccount(request.firstName(), request.lastName(), request.accountNumber(), request.balance());
     }
 
     @Override

@@ -14,11 +14,16 @@ public class BankAccount {
     private String accountNumber;
     private double balance;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public BankAccount(){
 
     }
 
-    public BankAccount(String accountNumber, double balance){
+    public BankAccount(User user, String accountNumber, double balance){
+        this.user = user;
         this.accountNumber = accountNumber;
         this.balance = balance;
     }
@@ -42,6 +47,10 @@ public class BankAccount {
 
     public double getBalance() {
         return balance;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public void setAccountNumber(String accountNumber) {
