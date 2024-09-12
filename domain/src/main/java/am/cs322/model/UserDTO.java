@@ -1,4 +1,4 @@
 package am.cs322.model;
 
-public record UserDTO(String fullName) {
+public record UserDTO(String status) {
 }

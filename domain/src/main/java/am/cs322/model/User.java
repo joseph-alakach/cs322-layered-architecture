@@ -2,7 +2,7 @@ package am.cs322.model;
 
 import jakarta.persistence.*;
 
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "\"user\"")
@@ -14,6 +14,9 @@ public class User {
     private String firstName;
     private String lastName;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<BankAccount> bankAccounts = new ArrayList<>();
+
     public User() {
 
     }
@@ -21,6 +24,14 @@ public class User {
     public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public void addBankAccount(BankAccount bankAccount){
+        bankAccounts.add(bankAccount);
+    }
+
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
     }
 
     @Override
